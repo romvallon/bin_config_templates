@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#rm list_links
+#for i in *; do
+    #echo $i
+    #echo " ->" $(realpath $i)
+    #if [ -L $i ]; then 
+        #echo $i $(realpath $i) >> list_links
+    #fi
+#done
+if [  "$#" -eq 1 ]; then
+  dir=$1
+else 
+  dir="./"
+fi
+
+
+trash $dir/FiguresHL
+mkdir $dir/FiguresHL
+
+for i in $dir/Figures/*; do 
+    src=$(realpath $i)
+    tgt=$dir/FiguresHL/$(basename $i)
+    echo "src:" $src "    =>tgt: "$tgt
+    ln $src $tgt
+done  
+

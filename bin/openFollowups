@@ -1,0 +1,11 @@
+#!/bin/bash
+
+weekly=$POSTDOC/follow-up_wbw.md
+literature=$POSTDOC/follow-up_literature.md
+local=follow-up.md
+
+if [ -f $local ]; then
+  nvim $local $weekly $literature
+else
+  nvim $weekly $literature
+fi

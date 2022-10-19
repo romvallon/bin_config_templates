@@ -1,0 +1,21 @@
+#!/bin/bash
+
+source="/home/romain/Documents/0-le_jardin_du_repos/0-administratif/08-Embauche"
+
+if [ "$#" -lt 1 ] ; then
+    echo "no input language. Options: 'en' or 'fr'."
+    exit 2
+fi
+
+flist=(
+  "cv/202202_long-$1/cv_long-$1.pdf"
+  "cv/202202_short-$1/cv_short-$1.pdf"
+)
+
+for f in ${flist[@]}; do
+    echo $f
+    fname=$(echo $f | rev | cut -d'/' -f 1 | rev)
+    ln -s $source/$f  VALLON_$fname
+done
+
+echo cv were added

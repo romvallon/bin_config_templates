@@ -1,0 +1,14 @@
+#!/bin/bash
+
+source="/home/romain/Documents/0-le_jardin_du_repos/0-administratif/08-Embauche"
+
+flist=(
+  "cover/202202_researchcover/coverletter.pdf"
+)
+
+for f in ${flist[@]}; do
+    echo $f
+    ln -s $source/$f  VALLON_researchcover.pdf
+done
+
+echo research cover was added

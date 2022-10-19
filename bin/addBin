@@ -1,0 +1,27 @@
+#!/bin/bash
+
+HOST=$(hostname)
+if [[ $HOST = "mondelibre" || $HOST = "drus" ]]; then
+  TARGET=~/.local/bin
+elif [ $HOST = "n185-p59.eduroam.kth.se" ]; then
+  TARGET=~/bin
+else
+  echo "Unknown host name."
+  exit -1
+fi
+
+if [ "$#" -lt 1 ] ; then
+    echo "no input. Input real path of a binary file."
+    exit 2
+fi
+
+if [[ ! -x $1 ]]; then
+  echo Input file is not executable.
+  echo $1
+  exit -1
+fi
+
+SOURCE=$(realpath $1)
+ln -s $SOURCE  $TARGET
+
+echo $1 added to "$TARGET".

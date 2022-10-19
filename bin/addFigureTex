@@ -1,0 +1,48 @@
+#!/bin/bash
+
+#rm list_links
+#for i in *; do
+    #echo $i
+    #echo " ->" $(realpath $i)
+    #if [ -L $i ]; then 
+        #echo $i $(realpath $i) >> list_links
+    #fi
+#done
+if [ "$#" -lt 1 ] ; then
+    echo "no input figure??"
+    exit 2
+fi
+
+if [ "$#" -lt 2 ] ; then
+  dir="./"
+else
+  dir=$2
+fi
+
+for i in $@; do
+    echo $i
+    ln -s $i $dir/Figures/ 
+done
+
+#ln -s $1 $2/Figures/ 
+
+copyFigureHard  $dir
+
+
+for i in $@; do
+    echo $(basename $i) was added to both Figures and FiguresHL
+done
+
+
+
+
+###trash $1/FiguresHL
+###mkdir $1/FiguresHL
+
+##for i in $1/Figures/*; do 
+    ##src=$(realpath $i)
+    ##tgt=$1/FiguresHL/$(basename $i)
+    ##echo "src:" $src "    =>tgt: "$tgt
+    ##cp $src $tgt
+##done  
+

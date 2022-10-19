@@ -1,0 +1,51 @@
+#!/bin/bash
+
+if [ "$#" -lt 1 ] ; then
+    echo "no input filename."
+    exit 2
+fi
+
+filename=$(echo $1 | cut -d. -f1)
+extension=$( echo $1 | cut -d. -f2)
+
+if [ $extension == "" ]; then
+  echo "the input filename has no extension."
+  exit 2
+fi
+
+if [ -f "$1" ]; then
+    echo "File already exists."
+    exit 2
+fi
+
+today=$(LC_ALL=en.utf8 date)
+title="title"
+date=$(echo "Created on" $today".")
+who="Romain Vallon, postdoctoral researcher at KTH Royal Institute of Technology."
+object="Aim:"
+toc="[toc]"
+
+if [ $extension == "md" ]; then
+
+  echo '#' $title > $1
+  echo '' >> $1
+  echo $date$who>> $1
+  echo '' >> $1
+  echo $toc >> $1
+
+elif [ $extension == "py" ]; then
+
+  echo '#' $who>> $1
+  echo '#' $date>> $1
+  echo '#' $object>> $1
+
+elif [ $extension == "sh" ]; then
+
+  echo '#!/bin/bash'>> $1
+  echo '#' $who>> $1
+  echo '#' $date>> $1
+  echo '#' $object>> $1
+
+fi 
+
+exit 0

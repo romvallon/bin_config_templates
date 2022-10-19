@@ -1,0 +1,104 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Proposal template
+% LaTeX Template
+% Version 1.0 (30/12/13)
+%
+% This template has been adapted from the Memo template of:
+% Rob Oakes (http://www.oak-tree.us) with modifications by:
+% Vel (vel@latextemplates.com)
+%
+% Under license:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Original Memot template available at:
+% http://www.LaTeXTemplates.com
+%
+% Adapted by:
+% Romain Vallon, Postdoc, KTH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ % Set the paper size (letterpaper, a4paper, etc) and font size (10pt, 11pt or 12pt)
+\documentclass[letterpaper,11pt]{texMemo}
+
+% Adds paragraph spacing and defines paragraphs indentation
+\usepackage{parskip} 
+\setlength{\parindent}{15pt}
+
+% Adds hyperlinks and define color of url box
+\usepackage{hyperref}
+\hypersetup{urlbordercolor={0.105 0.3398 0.6484}}
+
+% Defines header and footer
+\usepackage{lastpage} % gets number of last page
+\usepackage{fancyhdr} % defines header and footer
+\renewcommand{\headrulewidth}{0pt} % remove header line separation
+\pagestyle{fancy} 
+
+\renewcommand{\figurename}{Fig.}
+
+%----------------------------------------------------------------------------------------
+%	PROPOSAL INFORMATION
+%----------------------------------------------------------------------------------------
+
+% Proposal title
+\proptitle{The hidden role of surfactants in industrial flows: \\ 
+  towards a DNS implementation}
+
+% Scientific and technical supervisors
+\sciensuper{Pr. Shervin Bagheri} 
+\techsuper{Dr. Romain Vallon}
+
+% Mail or website of the scientific and technical supervisors
+\scienmail{\href{https://www.bagherigroup.com/}{bagherigroup.com}} 
+\techmail{\href{mailto:rvallon@kth.se}{rvallon@kth.se}}
+
+% List of keywords at the end of the proposal, comment out this line for no list
+\keywords{surface tension, multiphase flows, surfactants, DNS, C++}
+
+% Institution logo at the top right of the memo, comment out this line for no logo
+\logo{\includegraphics[width=0.15\textwidth]{logo.png}}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Print the proposal information
+\maketitle
+
+Surfactants subtly impact the dynamics of multiphase flows. Despite being
+difficult to measure and everywhere present, they induce critical changes even
+at microscopic concentrations $O(10^{-7}\textnormal{mol}/\textnormal{m}^{-3})$.
+Those molecules are absorbed on the fluid interface, which modifies the
+interface properties and induces Marangoni forces. Up until today the effects of
+surface-active molecules in industrial or natural flows have only been
+quantified \textit{a posteriori} while the related research is recent and the
+modelling of such effects is an open question.  Direct Numerical Simulations are
+a useful tool to finely resolve the dynamics of a broad variety of flows and
+would be helpful in the modelling surfactant dynamics. Before hand that becomes
+possible, existing Navier-Stokes solvers need to be adapted to integrate
+surfactant governing equations. 
+
+Efforts are currently being led to implement the governing equations of
+surfactant dynamics in the \href{www.basilisk.com}{Basilisk} Navier-Stokes
+solver. The aim of this internship will be to contribute to the 3D
+implementation as well as the testing of the code with case studies, like rising
+bubbles. Solid knowledge of Fluid Mechanics and Numerical Analysis is expected
+along with good programming skills (Matlab or Python) and good communication
+skills in English, both oral and written. C++ and bash scripting skills are a
+plus.Technical supervision will be provided by R. Vallon and scientific
+supervision by S. Bagheri. Please provide a CV, a cover letter and your
+2021-22 academic transcript.
+
+\vfill
+\begin{figure}[h]
+  \centering
+  \includegraphics[height=0.23\textheight]{lis_surfactants}
+  \caption{Surfactant dynamics for a liquid-infused surface (Sundin \& Bagheri, 2022).}
+\end{figure}
+\vfill
+
+\makekeywords
+\cfoot{\thepage\ / \pageref{LastPage}}
+
+\end{document}}
+

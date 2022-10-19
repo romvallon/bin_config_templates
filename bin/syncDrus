@@ -1,0 +1,87 @@
+#!/bin/bash
+# BUP stands for BACKUP
+
+# example of command syncDrus pull KTH
+
+HOST=$(hostname)
+if [ $HOST = "mondelibre" ]; then
+  LOCALSUFFIX=ml
+elif [[ $HOST == *".eduroam.kth.se" || $HOST == 'Shervins-MacBook-Air.local' ]]; then
+  LOCALSUFFIX=mc
+else
+  echo "Unknown hostname."
+  exit -1
+fi
+
+REMOTE=drus
+REMOTESUFFIX=dr
+EXCFILE=$SYNCPRM/sync/rsync.exclude.drus
+
+TARGETNAME=$2
+
+if [[ $TARGETNAME = 'KTH' ]]; then
+  T_REMOTE=/scratch/rvallon/kth
+  T_LOCAL=$KTH
+
+elif [[ $TARGETNAME == 'RESEARCH' ]]; then
+  T_REMOTE=/scratch/rvallon/research
+  T_LOCAL=$RESEARCH
+
+elif [[ $TARGETNAME == 'SYNCPRM' ]]; then
+  T_REMOTE=/scratch/rvallon/synced_prm
+  T_LOCAL=$SYNCPRM
+
+else
+  echo "Folder is not synchronised. Synchronised folders are PRM, KTH and RESEARCH."
+  exit -1
+
+fi
+
+# MSUFFIX stands for machine suffix and represents the origin of the file in
+# case of backup.
+if [[ $1 == 'pull' ]]; then
+  MSUFFIX=$REMOTESUFFIX
+
+elif [[ $1 == 'push' ]]; then
+  MSUFFIX=$LOCALSUFFIX
+
+else
+  echo "Unknown direction of synchronization. Options: pull or push."
+  exit -1
+  
+fi
+
+BUP_FILE=~/Sync/backup_list_${MSUFFIX}_${TARGETNAME}
+SYNCFILE=~/Sync/sync_${MSUFFIX}_${TARGETNAME}_$(date +"%Y%m%d-%H%M")
+REMFILE=sync.removed_from_${REMOTE}
+
+# Check if there are backup files on server 
+if [[ $1 == 'pull' ]]; then
+  $(ssh -q $REMOTE "find $T_REMOTE -type f -name *~${LOCALSUFFIX}* ; exit" > $BUP_FILE)
+  $(ssh -q $REMOTE "find $T_REMOTE -type f -name *~${REMOTESUFFIX}* ; exit" >> $BUP_FILE)
+else
+  $(find $T_LOCAL -type f -name "*~${LOCALSUFFIX}*" > $BUP_FILE)
+  $(find $T_LOCAL -type f -name "*~${REMOTESUFFIX}*" >> $BUP_FILE)
+fi
+
+BUP_NB=$(less $BUP_FILE | wc -l)
+
+# Synchronize if no backup file is recorded
+if [[ ! $BUP_NB -eq 0 ]]; then
+  echo "Backup files exist. See '$BUP_FILE' and process them."
+  exit -1
+else
+  if [[ $1 == 'pull' ]]; then
+    rsync -e ssh -bravzu --exclude-from=$EXCFILE --suffix=~${MSUFFIX} $REMOTE:$T_REMOTE/ $T_LOCAL | tee $SYNCFILE.log
+  else
+    rsync -e ssh -bravzu --exclude-from=$EXCFILE --suffix=~${MSUFFIX} $T_LOCAL/ $REMOTE:$T_REMOTE | tee $SYNCFILE.log
+  fi
+  
+  # Remove backup file listing
+  if [[ -f $BUP_FILE ]]; then
+      $(rm $BUP_FILE)
+  fi
+  echo "Consider processing the backup files before the next sync. See '$SYNCFILE'."
+  exit 0
+fi
+

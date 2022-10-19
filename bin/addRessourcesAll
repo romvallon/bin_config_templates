@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# folder update 
+# ls * | xargs -I+ rm ../all/+ ; ls * | xargs -I+ addRessourcesAll +
+
+
+dest=$POSTDOC/ressources/all
+reslist=$POSTDOC/ressources/all/ressource_list
+
+if [ "$#" -lt 1 ] ; then
+    echo "no input ressource."
+    exit 2
+fi
+
+# Add symbolic link
+if [[ $HOST == *".eduroam.kth.se" ]]; then
+  ln -s $1  $dest/
+else
+  ln -sr $1  $dest/
+fi
+
+# list name of existing ressources
+ls $dest/*.pdf | rev | cut -d/ -f1 | rev > $reslist
+
+echo ressource $1 added to all.

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+target="transcripts"
+
+source="/home/romain/Documents/0-le_jardin_du_repos/0-administratif/02-Scolarité"
+
+flist=(
+  "1-MICHELET/MICHELET-transcript.pdf"
+  "2-ECM/ECM-transcript.pdf"
+  "3-TSINGHUA/TSINGHUA-transcript.pdf"
+)
+
+if [[ -d "$target" ]]; then
+  rm $target/*
+else
+  mkdir $target
+fi
+
+for f in ${flist[@]}; do
+    echo $f
+    ln -s $source/$f $target/ 
+done
+
+echo transcripts were added
