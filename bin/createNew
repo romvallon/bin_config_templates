@@ -29,7 +29,7 @@ if [ $extension == "md" ]; then
 
   echo '#' $title > $1
   echo '' >> $1
-  echo $date$who>> $1
+  echo "$date $who">> $1
   echo '' >> $1
   echo $toc >> $1
 
