@@ -20,31 +20,51 @@ fi
 
 today=$(LC_ALL=en.utf8 date)
 title="title"
-date=$(echo "Created on" $today".")
-who="Romain Vallon, postdoctoral researcher at KTH Royal Institute of Technology."
-object="Aim:"
+date=$(echo "Created on $today")
+who="Romain Vallon"
+position="Postdoctoral researcher"
+affiliation="KTH Royal Institute of Technology"
+object="Aim"
 toc="[toc]"
 
 if [ $extension == "md" ]; then
-
-  echo '#' $title > $1
-  echo '' >> $1
-  echo "$date $who">> $1
-  echo '' >> $1
-  echo $toc >> $1
+  
+  echo "# $title"                                     >> $1
+  echo ''                                             >> $1
+  echo "${date}. $who, ${position}, ${affiliation}."  >> $1
+  echo ''                                             >> $1
+  echo $toc                                           >> $1
 
 elif [ $extension == "py" ]; then
 
-  echo '#' $who>> $1
-  echo '#' $date>> $1
-  echo '#' $object>> $1
+  echo "# ${who}, ${position}, ${affiliation}." >> $1
+  echo "# ${date}."                             >> $1
+  echo "# ${object}:"                           >> $1
 
 elif [ $extension == "sh" ]; then
 
-  echo '#!/bin/bash'>> $1
-  echo '#' $who>> $1
-  echo '#' $date>> $1
-  echo '#' $object>> $1
+  echo '#!/bin/bash'                            >> $1
+  echo "# ${who}, ${position}, ${affiliation}." >> $1
+  echo '#' $date                                >> $1
+  echo '#' $object                              >> $1
+
+elif [ $extension == "tex" ]; then
+
+  echo "% ${who}, ${position}, ${affiliation}." >> $1
+  echo "% ${date}."                             >> $1
+  echo ''                                       >> $1
+  echo '\documentclass[11pt, a4paper]{report}'  >> $1
+  echo '\usepackage{authblk}'                   >> $1
+  echo ''                                       >> $1
+  echo "\\title{$title}"                        >> $1
+  echo "\\author{$who}"                         >> $1
+  echo "\\affil{$affiliation}"                  >> $1
+  echo "\\date{\\today}"                        >> $1
+  echo ''                                       >> $1
+  echo "\\begin{document}"                      >> $1
+  echo "\\maketitle"                            >> $1          
+  echo ''                                       >> $1
+  echo '\end{document}'                         >> $1
 
 fi 
 
