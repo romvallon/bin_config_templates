@@ -6,6 +6,10 @@ IN=${FILENAME}_input.sh
 TOTALCASES=$#
 TARGET=
 
+if [ $# -eq 0 ]; then
+  echo no input was passed
+fi
+
 for arg in "$@"; do 
 
 
