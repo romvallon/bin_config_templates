@@ -3,3 +3,34 @@ ERR=$FILENAME.err
 LOG=$FILENAME.log
 TMP=$FILENAME.tmp
 IN=${FILENAME}_input.sh
+TOTALCASES=$#
+TARGET=
+
+for arg in "$@"; do 
+
+
+
+
+
+
+done
+
+# Remove $TMP
+rm -f $TMP
+
+# Count number of processed cases
+if [ -f $LOG ]; then
+  PROCCASES=$(cat $LOG | wc -l)
+fi
+
+echo "Processed cases $PROCCASES/$TOTCASES."
+if [ ! $PROCCASES -eq 0 ]; then
+  echo "See list in $LOG."
+fi
+
+if [ -f $ERR ]; then
+  echo WARNING: some cases were not processed.
+  echo See list in $ERR.
+fi
+
+exit 0
