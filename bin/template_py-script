@@ -1,0 +1,42 @@
+# Generic imports                                
+import sys                                       
+import time                                      
+                                                 
+# Optional imports                               
+#from pathlib import Path                        
+#import matplotlib.pyplot as plt                 
+#import matplotlib                               
+#matplotlib.rcParams['text.usetex'] = True       
+#import numpy as np                              
+#import sympy as sp                              
+#import pandas as pd                             
+                                                 
+# Personal imports                               
+sys.path.insert(0, '.pylib')                     
+# Personal generic functions in lib/             
+import mystdlib as mstd                           
+# Parameters for the plot appearance             
+import pltprm                                     
+# Parameters for paper format                    
+import jfm_prm as jp                              
+                                                 
+# Global variables                               
+DISPLAYPLOT=0                                    
+SAVEXT=['pdf','svg']                             
+                                                 
+#######################################          
+def main():                                      
+                                                 
+    top = time.time()                            
+                                                 
+    _,outdir,scriptname = mstd.set_inoutdir()
+                                                 
+    elapsed = '%.2f'%(time.time() - top)         
+    print('\n Elapsed time: {}s'.format(elapsed))
+    return 0                                     
+                                                 
+#######################################          
+                                                 
+if __name__ == '__main__':                       
+                                                 
+    main()                                       

@@ -37,9 +37,11 @@ if [ $extension == "md" ]; then
 
 elif [ $extension == "py" ]; then
 
-  echo "# ${who}, ${position}, ${affiliation}." >> $1
-  echo "# ${date}."                             >> $1
-  echo "# ${object}:"                           >> $1
+  echo "# ${who}, ${position}, ${affiliation}."           >> $1
+  echo "# ${date}."                                       >> $1
+  echo "# ${object}:"                                     >> $1
+  echo ''                                                 >> $1
+  cat $SYNCPRM/bin/template_py-script                     >> $1
 
 elif [ $extension == "sh" ]; then
 

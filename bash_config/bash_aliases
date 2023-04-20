@@ -1,0 +1,48 @@
+# some more ls aliases
+alias ll='ls -hl'
+alias la='ls -A'
+alias l='ls -CF'
+alias lla='ls -hla'
+
+# Memory space of a directory
+alias memsp='du -h --max-depth=1'
+
+# Debian version
+alias debver='cat /etc/os-release'
+
+# Public IP
+alias ippub='curl ifconfig.me'
+
+# Password generator (12 characters)
+alias genpasswd='openssl rand -base64 12'
+
+# Restart / stop openvpn@roro
+alias res_askip='systemctl restart openvpn@roro.service'
+alias stop_askip='systemctl stop openvpn@roro.service'
+
+# Plot digitalizer
+alias pdigit='java -jar /scratch/rvallon/PlotDigitizer_Linux_and_Others/PlotDigitizer.jar'
+
+#Python
+alias py3='python3'
+
+# Plot digitalizer
+alias plotdigit='java -Xmx128m -jar /home/romain/Documents/0-le_jardin_du_repos/2-recherche/PlotDigitizer_Linux_and_Others/PlotDigitizer.jar'
+
+# Clean latex output
+alias cleantex='rm -f *~ *.aux *.bbl  *.blg *.log *.out *.bcf *.synctex.gz *.fls *.fdb* *.toc *.auxlock *.maf *.mtc *.run.xml *.mtc0 *.nav *.snm *-blx.bib'
+
+# List removed files in synchronized directories
+alias syrm=~/Sync/list_rm
+
+# Neovim
+alias vi='nvim'
+
+# Week number
+alias wknb='date +%U'
+
+# FreeFEM++
+alias ff=/scratch/rvallon/FreeFEM/bin/FreeFem++
+
+# trash-put
+alias tr='trash-put' 
