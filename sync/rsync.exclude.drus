@@ -5,4 +5,6 @@
 suivi_followup
 /home/romain/Documents/0-le_jardin_du_repos/2-recherche/8-postdocFSG/ressources/all
 .DS_Store
-
+~*
+.~*
+.ipynb_checkpoints/*
