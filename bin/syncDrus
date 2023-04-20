@@ -6,7 +6,7 @@
 HOST=$(hostname)
 if [ $HOST = "mondelibre" ]; then
   LOCALSUFFIX=ml
-elif [[ $HOST == *".eduroam.kth.se" || $HOST == 'Shervins-MacBook-Air.local' ]]; then
+elif [[ $HOST == *".eduroam.kth.se" || $HOST == *".local" ]]; then
   LOCALSUFFIX=mc
 else
   echo "Unknown hostname."
@@ -32,7 +32,7 @@ elif [[ $TARGETNAME == 'SYNCPRM' ]]; then
   T_LOCAL=$SYNCPRM
 
 else
-  echo "Folder is not synchronised. Synchronised folders are PRM, KTH and RESEARCH."
+  echo "Folder is not synchronised. Synchronised folders are SYNCPRM, KTH and RESEARCH."
   exit -1
 
 fi

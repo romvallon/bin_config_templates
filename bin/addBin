@@ -3,7 +3,7 @@
 HOST=$(hostname)
 if [[ $HOST = "mondelibre" || $HOST = "drus" ]]; then
   TARGET=~/.local/bin
-elif [ $HOST = "n185-p59.eduroam.kth.se" ]; then
+elif [[ $HOST == *".eduroam.kth.se" || $HOST == 'Shervins-MacBook-Air.local' ]]; then
   TARGET=~/bin
 else
   echo "Unknown host name."
