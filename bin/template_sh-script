@@ -1,0 +1,5 @@
+FILENAME=$(basename -a "$0" | cut -d. -f1)
+ERR=$FILENAME.err
+LOG=$FILENAME.log
+TMP=$FILENAME.tmp
+IN=${FILENAME}_input.sh

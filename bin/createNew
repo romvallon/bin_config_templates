@@ -24,7 +24,7 @@ date=$(echo "Created on $today")
 who="Romain Vallon"
 position="Postdoctoral researcher"
 affiliation="KTH Royal Institute of Technology"
-object="Aim"
+object="Aim:"
 toc="[toc]"
 
 if [ $extension == "md" ]; then
@@ -37,11 +37,11 @@ if [ $extension == "md" ]; then
 
 elif [ $extension == "py" ]; then
 
-  echo "# ${who}, ${position}, ${affiliation}."           >> $1
-  echo "# ${date}."                                       >> $1
-  echo "# ${object}:"                                     >> $1
-  echo ''                                                 >> $1
-  cat $SYNCPRM/bin/template_py-script                     >> $1
+  echo "# ${who}, ${position}, ${affiliation}." >> $1
+  echo "# ${date}."                             >> $1
+  echo "# $object"                              >> $1
+  echo ''                                       >> $1
+  cat $SYNCPRM/bin/template_py-script           >> $1
 
 elif [ $extension == "sh" ]; then
 
@@ -49,6 +49,8 @@ elif [ $extension == "sh" ]; then
   echo "# ${who}, ${position}, ${affiliation}." >> $1
   echo '#' $date                                >> $1
   echo '#' $object                              >> $1
+  echo ''                                       >> $1
+  cat $SYNCPRM/bin/template_sh-script           >> $1
 
 elif [ $extension == "tex" ]; then
 
