@@ -12,8 +12,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 "Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdcommenter'
 "Plug 'vim-scripts/Align'
+Plug 'mhartington/oceanic-next'
 call plug#end()
-
 
 
 " set type for FreeFem++ files
@@ -21,9 +21,9 @@ call plug#end()
 au BufNewFile,BufRead *.edp set filetype=edp
 
 
-set t_Co=256                " 256 color support
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
-colorscheme desert
+"colorscheme desert
+"colorscheme OceanicNext 
 
 let mapleader="," 
 
@@ -261,7 +261,11 @@ let g:Tex_MultipleCompileFormats= 'pdf'
 "" mapping <leader>lh to use SVED_Sync(), ie forward latex search with evince
 "" For backward, just use the <C-leftclick> 
 map <leader>lh :call SVED_Sync()<CR>
-let g:Tex_ViewRule_pdf = 'evince'
+if has("macunix")
+let g:Tex_ViewRule_pdf = 'open -a /Applications/Skim.app'
+else
+  let g:Tex_ViewRule_pdf = 'evince'
+endif
 let g:Tex_GotoError=0
 
 function! Tex_settings()
@@ -277,7 +281,7 @@ endfunction
 
 function! SetBibtex()
     let g:Tex_BibtexFlavor = 'bibtex'
-    map <Leader>lb :<C-U>exec '!bitex '.expand('%:p:h').'/'.Tex_GetMainFileName(':p:t:r').'.aux'<CR>
+    map <Leader>lb :<C-U>exec '!bibtex '.expand('%:p:h').'/'.Tex_GetMainFileName(':p:t:r').'.aux'<CR>
 endfunction
 
 
