@@ -8,14 +8,6 @@ dest=$POSTDOC/ressources/all
 reslist=$POSTDOC/ressources/all/ressource_list
 
 HOST=$(hostname)
-if [ $HOST = "mondelibre" ]; then
-  LOCALSUFFIX=ml
-elif [[ $HOST == *".eduroam.kth.se" || $HOST == *".local" ]]; then
-  LOCALSUFFIX=mc
-else
-  echo "Unknown hostname."
-  exit -1
-fi
 
 if [ "$#" -lt 1 ] ; then
     echo "no input ressource."
