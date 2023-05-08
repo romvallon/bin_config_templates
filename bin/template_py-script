@@ -19,6 +19,8 @@ import mystdlib as mstd
 import pltprm                                     
 # Parameters for paper format                    
 import jfm_prm as jp                              
+# Physical parameters
+import phyprm as phy
                                                  
 # Global variables                               
 DISPLAYPLOT=0                                    
