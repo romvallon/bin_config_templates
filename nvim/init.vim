@@ -302,6 +302,13 @@ function! SetupEnvironment()
                 :call IMAP('EFR',"\\begin{frame}{<++>}\<CR><++>\<CR>\\end{frame}", 'tex')
             endif
 
+      elseif l:path == '/scratch/rvallon/research/8-postdocFSG/meetings/group_meetings/202305_presentation'
+        :
+            if &filetype == 'tex'
+                let g:Tex_CompileRule_pdf='xelatex -interaction=nonstopmode -file-line-error -synctex=1 $*'
+                let g:Tex_FoldedEnvironments='verbatim,comment,eq,gather, align,figure,table,thebibliography, keywords,abstract,titlepage,frame,tikzpicture'
+                :call IMAP('EFR',"\\begin{frame}{<++>}\<CR><++>\<CR>\\end{frame}", 'tex')
+            endif
       else
         if &filetype == 'tex'
             let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode -file-line-error -synctex=1 $*'
