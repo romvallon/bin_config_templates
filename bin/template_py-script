@@ -10,6 +10,7 @@ import time
 #import numpy as np                              
 #import sympy as sp                              
 #import pandas as pd                             
+#import tikzplotlib as tpl
                                                  
 # Personal imports                               
 sys.path.insert(0, '.pylib')                     
