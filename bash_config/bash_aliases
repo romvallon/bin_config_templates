@@ -25,6 +25,10 @@ alias pdigit='java -jar /scratch/rvallon/PlotDigitizer_Linux_and_Others/PlotDigi
 
 #Python
 alias py3='python3'
+alias py30='$VENVS/env0/bin/python3.11'
+
+# activate python virtual environment
+alias actVenv0='source $SCRATCH/.venvs/env0/bin/activate'
 
 # Plot digitalizer
 alias plotdigit='java -Xmx128m -jar /home/romain/Documents/0-le_jardin_du_repos/2-recherche/PlotDigitizer_Linux_and_Others/PlotDigitizer.jar'
@@ -47,6 +51,4 @@ alias ff=/scratch/rvallon/FreeFEM/bin/FreeFem++
 # trash-put
 alias tr='trash-put' 
 
-# activate python virtual environment
-alias actVenv0='source $SCRATCH/.venvs/env0/bin/activate'
 
