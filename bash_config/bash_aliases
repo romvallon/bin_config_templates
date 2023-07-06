@@ -46,3 +46,7 @@ alias ff=/scratch/rvallon/FreeFEM/bin/FreeFem++
 
 # trash-put
 alias tr='trash-put' 
+
+# activate python virtual environment
+alias actVenv0='source $SCRATCH/.venvs/env0/bin/activate'
+
