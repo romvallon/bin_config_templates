@@ -1,7 +1,7 @@
 #!/bin/bash
 # Romain Vallon, Postdoctoral researcher, KTH Royal Institute of Technology.
 # Created on Thu Jul 6 10:02:09 CEST 2023
-# Aim:
+# Aim: activate python virtual environment
 
 FILENAME=$(basename -a "$0" | cut -d. -f1)
 ERR=$FILENAME.err
