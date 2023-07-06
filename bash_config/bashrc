@@ -141,5 +141,6 @@ export RESEARCH=/scratch/rvallon/research
 export POSTDOC=/scratch/rvallon/research/8-postdocFSG
 export FF=/scratch/rvallon/FreeFEM
 export ENGINE=/scratch/rvallon/engine_room
+export VENVS=/scratch/rvallon/.venvs
 export BASILISK=/scratch/rvallon/basilisk/src
 export PATH=$PATH:/scratch/rvallon/basilisk/src
