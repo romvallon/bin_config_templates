@@ -17,6 +17,6 @@ if [ $# -eq 0 ]; then
 fi
 
 
-source ~/.venvs/$1/bin/activate
+source $SCRATCH/.venvs/$1/bin/activate
 
 exit 0
