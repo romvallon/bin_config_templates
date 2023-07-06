@@ -1,0 +1,22 @@
+#!/bin/bash
+# Romain Vallon, Postdoctoral researcher, KTH Royal Institute of Technology.
+# Created on Thu Jul 6 10:02:09 CEST 2023
+# Aim:
+
+FILENAME=$(basename -a "$0" | cut -d. -f1)
+ERR=$FILENAME.err
+LOG=$FILENAME.log
+TMP=$FILENAME.tmp
+IN=${FILENAME}_input.sh
+TOTALCASES=$#
+TARGET=
+
+if [ $# -eq 0 ]; then
+  echo No input was passed.
+  exit -1
+fi
+
+
+source ~/.venvs/$1/bin/activate
+
+exit 0
