@@ -12,20 +12,22 @@ import time
 #import pandas as pd                             
 #import tikzplotlib as tpl
                                                  
-# Personal imports                               
-sys.path.insert(0, '.pylib')                     
-# Personal generic functions in lib/             
-import mystdlib as mstd                           
-# Parameters for the plot appearance             
-import pltprm                                     
-# Parameters for paper format                    
-import jfm_prm as jp                              
+# Personal imports 
+sys.path.insert(0, '.pylib')
+# Personal generic functions in lib/
+import mystdlib as mstd 
+# Parameters for the plot appearance 
+import pltprm 
+# Parameters for paper format 
+import jfm_prm as jp 
 # Physical parameters
 import phyprm as phy
+# analytical functions
+import expressionlib as expres
                                                  
 # Global variables                               
-DISPLAYPLOT=0                                    
-SAVEXT=['pdf','svg']                             
+DISPLAYPLOT=0
+SAVEXT=['pdf','svg']
                                                  
 #######################################          
 def main():                                      
