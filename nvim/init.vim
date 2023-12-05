@@ -290,6 +290,17 @@ function! SetupEnvironment()
   let local_vim = ".vimrc"
   let l:path = expand('%:p:h')
 
+  if &filetype == 'tex'
+
+    :call IMAP('EFR',"\\begin{frame}{<++>}\<CR><++>\<CR>\\end{frame}", 'tex')
+    :call IMAP('ECS',"\\begin{columns}\<CR><++>\<CR>\\end{columns}", 'tex')
+    :call IMAP('ECO',"\\begin{column}{<++>}\<CR><++>\<CR>\\end{column}", 'tex')
+    :call IMAP('EBL',"\\begin{block}{<++>}\<CR><++>\<CR>\\end{block}", 'tex')
+    :call IMAP('EFS',"\\begin{subfigures}[<+htpb+>]{<++>}\<CR>\\centering\<CR>\\includegraphics{<+file+>}\<CR>\\caption{<+caption text+>}\<CR>\\label{fig:\<+label+\>}<++>\<CR>\\end{subfigure}", 'tex')
+    :call IMAP('ETP',"\\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]\<CR>\\input{<+tikz file+>}\<CR>\\end{tikzpicture}", 'tex')
+
+  endif
+
   if filereadable(l:path . "/" . local_vim ) 
         echo "found a .vimrc, loading it"
         exe ":so" . l:path  . "/" . local_vim 
@@ -302,12 +313,11 @@ function! SetupEnvironment()
                 :call IMAP('EFR',"\\begin{frame}{<++>}\<CR><++>\<CR>\\end{frame}", 'tex')
             endif
 
-      elseif l:path == '/scratch/rvallon/research/8-postdocFSG/meetings/group_meetings/202305_presentation'
+      elseif l:path == '/scratch/rvallon/research/8-postdocFSG/com_publications/cnrs/pres'
         :
             if &filetype == 'tex'
                 let g:Tex_CompileRule_pdf='xelatex -interaction=nonstopmode -file-line-error -synctex=1 $*'
                 let g:Tex_FoldedEnvironments='verbatim,comment,eq,gather, align,figure,table,thebibliography, keywords,abstract,titlepage,frame,tikzpicture'
-                :call IMAP('EFR',"\\begin{frame}{<++>}\<CR><++>\<CR>\\end{frame}", 'tex')
             endif
       else
         if &filetype == 'tex'
