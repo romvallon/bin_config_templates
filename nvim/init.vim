@@ -296,7 +296,7 @@ function! SetupEnvironment()
     :call IMAP('ECS',"\\begin{columns}\<CR><++>\<CR>\\end{columns}", 'tex')
     :call IMAP('ECO',"\\begin{column}{<++>}\<CR><++>\<CR>\\end{column}", 'tex')
     :call IMAP('EBL',"\\begin{block}{<++>}\<CR><++>\<CR>\\end{block}", 'tex')
-    :call IMAP('EFS',"\\begin{subfigures}[<+htpb+>]{<++>}\<CR>\\centering\<CR>\\includegraphics{<+file+>}\<CR>\\caption{<+caption text+>}\<CR>\\label{fig:\<+label+\>}<++>\<CR>\\end{subfigure}", 'tex')
+    :call IMAP('EFS',"\\begin{subfigure}{<++>}\<CR>\\centering\<CR>\\includegraphics{<+file+>}\<CR>\\caption{<+caption text+>}\<CR>\\label{fig:\<+label+\>}<++>\<CR>\\end{subfigure}", 'tex')
     :call IMAP('ETP',"\\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]\<CR>\\input{<+tikz file+>}\<CR>\\end{tikzpicture}", 'tex')
 
   endif
