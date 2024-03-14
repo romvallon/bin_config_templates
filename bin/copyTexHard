@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#rm list_links
+#for i in *; do
+    #echo $i
+    #echo " ->" $(realpath $i)
+    #if [ -L $i ]; then 
+        #echo $i $(realpath $i) >> list_links
+    #fi
+#done
+if [  "$#" -eq 2 ]; then
+  dir=$1
+  base=$2
+else 
+  echo "no input dir and base??"
+  exit 2
+fi
+
+
+trash $dir/${base}HL
+mkdir $dir/${base}HL
+
+for i in $dir/$base/*; do 
+    src=$(realpath $i)
+    tgt=$dir/${base}HL/$(basename $i)
+    echo "src:" $src "    =>tgt: "$tgt
+    ln $src $tgt
+done  
+
