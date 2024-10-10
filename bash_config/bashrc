@@ -128,6 +128,9 @@ LD_LIBRARY_PATH=/usr/local/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/scratch/rvallon/FreeFEM/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/scratch/rvallon/FreeFEM/ff-petsc/r/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/scratch/rvallon/FreeFEM/ff-petsc/c/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lscratch/rvallon/FreeFEM/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lscratch/rvallon/FreeFEM/ff-petsc/r/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lscratch/rvallon/FreeFEM/ff-petsc/c/lib
 
 # Add paths to PATH
 export PATH=$PATH:/home/rvallon/.local/bin
@@ -135,8 +138,10 @@ export PATH=$PATH:/scratch/rvallon/FreeFEM
 
 # Define path short names
 export SCRATCH=/scratch/rvallon
+export LSCRATCH=/lscratch/rvallon
 export SYNCPRM=/scratch/rvallon/synced_prm
 export KTH=/scratch/rvallon/kth
+export PERSO=/scratch/rvallon/perso
 export RESEARCH=/scratch/rvallon/research
 export POSTDOC=/scratch/rvallon/research/8-postdocFSG
 export FF=/scratch/rvallon/FreeFEM

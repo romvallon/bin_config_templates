@@ -313,12 +313,16 @@ function! SetupEnvironment()
                 :call IMAP('EFR',"\\begin{frame}{<++>}\<CR><++>\<CR>\\end{frame}", 'tex')
             endif
 
-      elseif l:path == '/scratch/rvallon/research/8-postdocFSG/com_publications/cnrs/pres'
-        :
-            if &filetype == 'tex'
-                let g:Tex_CompileRule_pdf='xelatex -interaction=nonstopmode -file-line-error -synctex=1 $*'
-                let g:Tex_FoldedEnvironments='verbatim,comment,eq,gather, align,figure,table,thebibliography, keywords,abstract,titlepage,frame,tikzpicture'
-            endif
+      "elseif l:path == '/scratch/rvallon/research/8-postdocFSG/com_publications/efdc1/pres'
+        ":
+            "if &filetype == 'tex'
+                "let g:Tex_CompileRule_pdf='xelatex -interaction=nonstopmode -file-line-error -synctex=1 -shell-escape $*'
+                "let g:Tex_FoldedEnvironments='verbatim,comment,eq,gather, align,figure,table,thebibliography, keywords,abstract,titlepage,frame,tikzpicture'
+            "endif
+      elseif l:path == '/scratch/rvallon/research/8-postdocFSG/com_publications/2DLIS_surfactant/0-manuscript'
+        if &filetype == 'tex'
+            let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode -file-line-error -synctex=1 -shell-escape $*'
+        endif
       else
         if &filetype == 'tex'
             let g:Tex_CompileRule_pdf='pdflatex -interaction=nonstopmode -file-line-error -synctex=1 $*'
