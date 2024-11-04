@@ -1,8 +1,8 @@
 # some more ls aliases
-alias ll='ls -hl'
-alias la='ls -A'
-alias l='ls -CF'
-alias lla='ls -hla'
+#alias ll='ls -hl'
+#alias la='ls -A'
+#alias l='ls -CF'
+#alias lla='ls -hla'
 
 # Memory space of a directory
 alias memsp='du -h --max-depth=1'
@@ -50,5 +50,3 @@ alias ff=/scratch/rvallon/FreeFEM/bin/FreeFem++
 
 # trash-put
 alias tr='trash-put' 
-
-

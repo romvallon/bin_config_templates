@@ -63,9 +63,12 @@ parse_git_branch() {
 if [ "$color_prompt" = yes ]; then
   # full path of working dir
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+
+  # full path of working dir and git branch
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$(parse_git_branch)$ '
   
     # Last two directories and git branch
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]${PWD#${PWD%/*/*}/}\[\033[00m\]$(parse_git_branch)$ '
+    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]${PWD#${PWD%/*/*}/}\[\033[00m\]$(parse_git_branch)$ '
 
   # Last two directories with time
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0;37m\][\A]\[\033[00m\]\[\033[01;34m\]${PWD#${PWD%/*/*}/} \[\033[00m\]\$ '
@@ -90,18 +93,22 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -123,6 +130,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # Define library path
 LD_LIBRARY_PATH=/usr/local/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/scratch/rvallon/FreeFEM/lib
@@ -134,18 +144,18 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lscratch/rvallon/FreeFEM/ff-petsc/c/lib
 
 # Add paths to PATH
 export PATH=$PATH:/home/rvallon/.local/bin
-export PATH=$PATH:/scratch/rvallon/FreeFEM
+#export PATH=$PATH:/scratch/rvallon/FreeFEM
+#export PATH=$PATH:/scratch/rvallon/basilisk/src
 
 # Define path short names
-export SCRATCH=/scratch/rvallon
-export LSCRATCH=/lscratch/rvallon
-export SYNCPRM=/scratch/rvallon/synced_prm
-export KTH=/scratch/rvallon/kth
-export PERSO=/scratch/rvallon/perso
-export RESEARCH=/scratch/rvallon/research
-export POSTDOC=/scratch/rvallon/research/8-postdocFSG
-export FF=/scratch/rvallon/FreeFEM
-export ENGINE=/scratch/rvallon/engine_room
-export VENVS=/scratch/rvallon/.venvs
-export BASILISK=/scratch/rvallon/basilisk/src
-export PATH=$PATH:/scratch/rvallon/basilisk/src
+#export SCRATCH=/scratch/rvallon
+#export LSCRATCH=/lscratch/rvallon
+#export KTH=/scratch/rvallon/kth
+export SYNCPRM=/home/rvallon/syncprm
+export PERSO=/home/rvallon/Documents/perso
+#export RESEARCH=/scratch/rvallon/research
+#export POSTDOC=/scratch/rvallon/research/8-postdocFSG
+#export FF=/scratch/rvallon/FreeFEM
+#export ENGINE=/scratch/rvallon/engine_room
+#export VENVS=/scratch/rvallon/.venvs
+#export BASILISK=/scratch/rvallon/basilisk/src
