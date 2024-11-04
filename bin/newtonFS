@@ -1,21 +1,28 @@
 #!/bin/bash
+# inputs: 
+#   1: mount, umount
+#   2: home, scratch, store
+# custom: LPATH, HOMEPATH, SCRATCHPATH, STOREPATH
+
+USER=rvallon
 
 # remote
-HOMEPATH='/home/lmfa/rvallon'
-SCRATCHPATH='/scratch/rvallon'
+HOMEPATH='/home/lmfa/$USER'
+SCRATCHPATH='/scratch/$USER'
 STOREPATH='/store/lmfa-4/turb_strat_2D'
 
 # local
-LPATH='/home/rvallon/Documents/newton'
+LPATH='/home/$USER/Documents/newton'
+
 
 if [ "$#" -lt 2 ] ; then
   echo "no input. Input operation (mount/umount) and remote target."
-    exit 2
+  exit 2
 fi
+
 
 OP=$1
 TARGET=$2
-
 
 
 if [[ "$TARGET" = 'home' ]] ; then
@@ -25,10 +32,9 @@ elif [[ "$TARGET" = 'store' ]] ; then
 elif [[ "$TARGET" = 'scratch' ]] ; then
   RPATH=$SCRATCHPATH
 else
-  echo "Unknown remote target: " $2
+  echo "Unknown remote target: " $TARGET
   exit -1
 fi
-
 
 
 if [[ "$OP" = 'mount' ]] ; then
@@ -41,7 +47,7 @@ elif [[ "$OP" = 'umount' ]] ; then
 
 else
 
-  echo "Unknown operation: " $1
+  echo "Unknown operation: " $OP
   exit -1
 
 fi
