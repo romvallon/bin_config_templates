@@ -7,12 +7,12 @@
 USER=rvallon
 
 # remote
-HOMEPATH='/home/lmfa/$USER'
-SCRATCHPATH='/scratch/$USER'
+HOMEPATH='/home/lmfa/'$USER
+SCRATCHPATH='/scratch/'$USER
 STOREPATH='/store/lmfa-4/turb_strat_2D'
 
 # local
-LPATH='/home/$USER/Documents/newton'
+LPATH='/home/'$USER'/Documents/newton'
 
 
 if [ "$#" -lt 2 ] ; then
