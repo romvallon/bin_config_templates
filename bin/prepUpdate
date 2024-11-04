@@ -1,0 +1,6 @@
+sudo apt autoremove
+sudo apt autoclean
+sudo apt update
+sudo apt list --upgradable
+echo ''
+echo "If needed, you can 'sudo apt upgrade' now."
