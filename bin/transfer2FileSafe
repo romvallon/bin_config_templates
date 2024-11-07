@@ -1,0 +1,45 @@
+#!/bin/bash
+# uuid: universal unique identifier
+
+FILESAFE='/home/rvallon/.filesafe'
+MAP=$FILESAFE'/000-map'
+ARBO=$FILESAFE'/000-arbo'
+
+if [ "$#" -lt 1 ] ; then
+  echo "No input. Input filename."
+  exit 2
+fi
+
+if [[ ! -f $1 ]] ; then
+  echo "Input is not a file."
+  exit -1
+elif [[ -L $1 ]] ; then
+  echo "Input is already a symbolic link to an existing file."
+  exit -1
+fi
+
+INPATH=$(realpath $1)
+
+# Get the number of dots in the filename 
+DOTS=$(echo $1 | grep -o "\." | wc -l)
+
+# Get the file extension
+EXTENSION=""
+if [ $DOTS -gt 1 ] ; then
+  echo "The file name possibly contains several extensions."
+  read -p "Enter the extension to use: " EXTENSION
+else
+  #  Returns the extension with '.' (e.g.: .txt) or nothing if no extension
+  EXTENSION=$([[ "$1" = *.* ]] && echo ".${1##*.}" || echo '')
+fi
+
+# Set universal unique id with the file extension
+UUID=$(uuidgen)$EXTENSION
+
+echo $1","$UUID >> $MAP
+echo $UUID","$INPATH >> $ARBO
+cp $1 $1.transferFileSafe
+mv $1 $FILESAFE/$UUID
+ln -sr $FILESAFE/$UUID $1
+trash-put $1.transferFileSafe
+
