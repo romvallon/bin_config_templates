@@ -1,4 +1,8 @@
 #!/bin/bash
+# Change rights to:
+#   - read/write for files
+#   - read/write/execute for files
+# for user and group
 
 if [ "$#" -lt 1 ] ; then
     echo "no input. Input directory, can be '.'."
