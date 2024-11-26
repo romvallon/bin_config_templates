@@ -1,13 +1,15 @@
 #!/bin/bash
 
 HOST=$(hostname)
-if [[ $HOST = "mondelibre" || $HOST = "drus" || $HOST = "lmfa-i11-24" ]]; then
-  TARGET=~/.local/bin
-elif [[ $HOST == *".eduroam.kth.se" || $HOST == 'Shervins-MacBook-Air.local' ]]; then
+if [[ $HOST == *".eduroam.kth.se" || $HOST == 'Shervins-MacBook-Air.local' ]]; then
   TARGET=~/bin
 else
-  echo "Unknown host name."
-  exit -1
+  TARGET=~/.local/bin
+fi
+
+if [ ! -d $TARGET ] ; then
+    echo "Target directory does not exist."
+    exit 2
 fi
 
 if [ "$#" -lt 1 ] ; then
