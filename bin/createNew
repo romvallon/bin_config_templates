@@ -23,7 +23,7 @@ title="title"
 date=$(echo "Created on $today")
 who="Romain Vallon"
 position="Postdoctoral researcher"
-affiliation="KTH Royal Institute of Technology"
+affiliation="École Centrale Lyon"
 object="Aim:"
 toc="[toc]"
 
